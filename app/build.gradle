@@ -49,6 +49,7 @@ publishing {
         }
        
     }
+}
 
 application {
     // Define the main class for the application.
