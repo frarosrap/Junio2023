@@ -1,4 +1,4 @@
-name: Flujo de trabajo para la integración continua
+name: 2 Flujo de trabajo para la integración continua
 on:
   workflow_dispatch:
   push:
@@ -64,6 +64,6 @@ jobs:
       - name: Publicando el código
         run: |
           chmod +x gradlew        
-          ./gradlew publishing
+          ./gradlew publish
       - name: mostrando uvus
         run: echo 'frarosrap' 
