@@ -24,9 +24,35 @@ dependencies {
     implementation 'com.google.guava:guava:30.1.1-jre'
 }
 
+publishing {
+    repositories {
+        maven {
+            name = "GitHubPackages"
+            url = uri("https://maven.pkg.github.com/frarosrap/Junio2023")         
+            credentials {
+            //las propiedades gpr.user y gpr.key están configuradas en gradle.properties en el raiz del proyecto, y se añade a .gitignore para que no se suban
+            //O bien configuro las variables de entorno GITHUB_LOGIN y GITHUB_PACKAGES
+                username = project.findProperty("gpr.user") ?: System.getenv("GITHUB_LOGIN")
+                password = project.findProperty("gpr.key") ?: System.getenv("GITHUB_PACKAGES")
+                }
+        }
+    }
+    publications {
+        gpr(MavenPublication) {
+            //Del tutorial https://docs.gradle.org/current/userguide/publishing_maven.html#publishing_maven
+        
+            groupId = 'muit.fs.junio22'
+            artifactId = 'FirstDayAtSchool'
+            version = '0.0.1-frarosrap'
+
+            from components.java
+        }
+       
+    }
+
 application {
     // Define the main class for the application.
-    mainClass = 'muit.fs.junio22.App'
+    mainClass = 'muit.fs.junio22.FirstDayAtSchool'
 }
 
 tasks.named('test') {
