@@ -3,3 +3,7 @@
 
 # Ignore Gradle build output directory
 build
+
+#No quiero subir el fichero de configuración de gradle, porque contiene secretos
+gradle.properties
+./app/gradle.properties
